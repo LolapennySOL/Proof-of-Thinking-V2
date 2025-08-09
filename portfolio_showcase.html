@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change - A POW Writeup on Fundamentally Changing Antiquated Workflows and Systems</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #e74c3c;
+            margin: 25px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #27ae60;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        h5 {
+            color: #8e44ad;
+            margin: 15px 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .question-list {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .numbered-list {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .lettered-list {
+            margin-left: 40px;
+            margin-bottom: 15px;
+        }
+
+        .roman-list {
+            margin-left: 60px;
+            margin-bottom: 10px;
+        }
+
+        .sub-numbered {
+            margin-left: 80px;
+            margin-bottom: 10px;
+        }
+
+        .formula {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .quote {
+            background: #e9f7ef;
+            border-left: 4px solid #27ae60;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            border-radius: 5px;
+        }
+
+        .financial-impact {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .financial-impact h2 {
+            color: #f8f9fa;
+        }
+
+        .financial-impact h3 {
+            color: #f8f9fa;
+        }
+
+        strong {
+            color: #e74c3c;
+        }
+
+        em {
+            color: #8e44ad;
+            font-style: italic;
+        }
+
+        .ticker {
+            background: #27ae60;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #e74c3c);
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Change - A POW Writeup on Fundamentally Changing Antiquated Workflows and Systems</h1>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <p><strong>Automate my company's radio schedule following layoffs. There is no reason for a human to be doing this anymore. Let me see who I can call that can help.</strong></p>
+            </div>
+
+            <div class="section">
+                <h2>Why does a human (me) do this?</h2>
+                
+                <div class="numbered-list">
+                    <p><strong>1) Ask CTO</strong> - can this be an automated process, and what tools do you have to potentially help? Had nothing of use. Just rolled up crap.</p>
+                    
+                    <p><strong>2) Ask VPO</strong> - can you connect me with someone who does this? Was told if that person existed, they can't afford them, and CTO would help me. Ok. Dead end.</p>
+                    
+                    <p><strong>3) Ask VPT</strong> - What tools do you have for this that can be implemented? Got 2 hour rant on horses, manually turning on AM receivers for radio in the 80s, and a whole lot of fancy words for… nothing (but he could if he wanted to, wanted to make that very clear to me).</p>
+                    
+                    <div class="lettered-list">
+                        <p><strong>a)</strong> Ok. I bet I can do it myself anyways. I work with AI to talk crypto and DeFi all the time. Maybe that won't help me here at all though. Let's see.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Ok. So start from scratch.</h2>
+                
+                <div class="numbered-list">
+                    <p><strong>1) Google drive built in Gemini feature?</strong></p>
+                    
+                    <div class="lettered-list">
+                        <p><strong>a)</strong> Tried. Awful (wish I had access to how bad this was, but the only place that this is stored for me to see at the moment is under "History settings," click My Activity. That was off, so I can no longer go back and get it. At first - it spit out formulas to use =TODAY function to build future dates… so it was only good in relation to the day I would build it. Then, when I prompted it away from that - it wanted to use a date as a reference - something similar to what is below. It just repackaged the concept of a =TODAY function into a static date to reference. Still not what I want - and now I am barking up a tree that is reliant on a single, random date… not what I want. Wrong path.</p>
+                        
+                        <div class="roman-list">
+                            <p><strong>i)</strong> New AI model? What would give me the most consistent, adaptive date, without needing to rely on an outside API every time, but could rely more on actual logic rather than static info I provide somewhere else? Can anything do that, that I can afford or have access to.</p>
+                            
+                            <div class="sub-numbered">
+                                <p><strong>(1)</strong> I own <span class="ticker">$AIKEK</span> and like their team. I have the highest $25k tier membership so let's use some of these API call tokens. They have solely been used to both challenge my own knowledge with thought provoking questions, and ask "wen moon" in a lobotomized way in the public chat. Equally important stress tests to me if you are testing crypto-focused AI projects.</p>
+                                <p><strong>AlphaKek testing time.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>AlphaKek AI Testing Process</h2>
+                
+                <div class="numbered-list">
+                    <p><strong>1) /ask</strong> (call their API function) can you write Google Sheets formulas?</p>
+                    <div class="lettered-list">
+                        <p><strong>a)</strong> Sure, I can write Google Sheets formulas. What specific formulas or calculations do you need help with?</p>
+                    </div>
+
+                    <p><strong>2) /ask</strong> I need formulas I can use in Google Sheets to have specific blocks call dates. For example, the B7 cell has Monday August 11th, the B8 cell has Tuesday August 12th, and so on, until it end with Sunday August 17th. I want the formula you create to be able to create those dates once again, but make them automatically change each week to match the next corresponding date</p>
+                    
+                    <div class="lettered-list">
+                        <p><strong>a)</strong> Long response. It gives me three options - summarized as using 3 different backbones.</p>
+                        <div class="roman-list">
+                            <p><strong>i)</strong> Uses the =TODAY (This makes me question my takeaway on Gemini. It must have been me incorrectly prompting that led to error)</p>
+                            <p><strong>ii)</strong> Starting from a specific date.</p>
+                            <p><strong>iii)</strong> Dynamic weekly date range (also uses =TODAY)</p>
+                        </div>
+                    </div>
+
+                    <p><strong>3) /ask</strong> I need formulas I can use in Google Sheets to have specific blocks call dates. For example, the B7 cell would display Monday August 11th, the B8 cell will display Tuesday August 12th, and so on, until it end with Sunday August 17th. I want the formula to be placed in the A1 cell. I do not want it to reference any of the dates I told you above.</p>
+                    
+                    <div class="lettered-list">
+                        <p><strong>a) Formula to Place in A1</strong></p>
+                        <div class="roman-list">
+                            <p><strong>i)</strong> Nope.</p>
+                        </div>
+                        <p><strong>b) Alternative Formula</strong> (if you want to start from a specific date, e.g., August 11, 2025):</p>
+                        <div class="roman-list">
+                            <p><strong>i)</strong> Nope.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight">
+                    <p>- I got back all the formulas I could rewrite to work correctly, but nothing I could simply slide in and use. I didn't understand what needed to be asked/how it needed to be asked/what the end result should be.</p>
+                    <p>- Ok. Time to go learn what WOULD work - then guide my questions to these models towards that. Let's use AIKEK to find some manual tutorials</p>
+                </div>
+
+                <div class="numbered-list">
+                    <p><strong>4) /ask</strong> I need a tutorial for how I can make dynamic dates in Google Sheets</p>
+                    <div class="lettered-list">
+                        <p><strong>a)</strong> More formulas returned. Dammit.</p>
+                        <div class="roman-list">
+                            <p><strong>i)</strong> Wait one looks worth exploring: =QUERY(A:B, "SELECT A, B WHERE A >= date '"&TEXT(D1, "yyyy-mm-dd")&"' AND A <= date '"&TEXT(E1, "yyyy-mm-dd")&"'").</p>
+                        </div>
+                    </div>
+
+                    <p><strong>5) /ask</strong> I need Google Sheets to do the following - in cell B7, I need a dynamically updating date that is always the Monday of that week. For example - if I open the sheet on Wednesday, August 13th, 2025, cell b7 needs to display Monday, August 11th in cell B7. If I open the document on Thursday, August 14th, 2025, cell b7 needs to still display Monday, August 11th in cell b7.</p>
+                    
+                    <div class="lettered-list">
+                        <p><strong>a)</strong> =TODAY() - WEEKDAY(TODAY(), 2) + 1.</p>
+                        <div class="roman-list">
+                            <p><strong>i)</strong> <span class="highlight" style="background: #d4edda; color: #155724; font-weight: bold;">BOOM. SO CLOSE.</span></p>
+                        </div>
+                    </div>
+
+                    <p><strong>6) /ask</strong> replace =TODAY in "=TODAY() - WEEKDAY(TODAY(), 2) + 1" with something else.</p>
+                    <div class="lettered-list">
+                        <p><strong>a)</strong> =A1 - WEEKDAY(A1, 2) + 1.</p>
+                        <div class="roman-list">
+                            <p><strong>i)</strong> Ok. I don't like that it's referencing cell A1 on my pretty sheet, but let's work from here. I do not want to type a single date, so now I have to have cell A1 always know when Monday is</p>
+                        </div>
+                    </div>
+
+                    <p><strong>7) /ask</strong> how do I get Google Sheets to populate a single date in cell A1 that is always next Monday?</p>
+                    <div class="lettered-list">
+                        <p><strong>a)</strong> =IF(WEEKDAY(TODAY(), 2) = 1, TODAY(), TODAY() + (8 - WEEKDAY(TODAY(), 2)))</p>
+                        <div class="roman-list">
+                            <p><strong>i)</strong> <span class="highlight" style="background: #d4edda; color: #155724; font-weight: bold;">We got 'em. Now - make it pretty time.</span></p>
+                        </div>
+                    </div>
+
+                    <p><strong>8) /ask</strong> how do I take =A1 - WEEKDAY(A1, 2) + 1, and change the A1 to reference a different A1 cell, on the second google sheets tab?</p>
+                    <div class="lettered-list">
+                        <p><strong>a)</strong> =Sheet2!A1 - WEEKDAY(Sheet2!A1, 2) + 1</p>
+                        <div class="roman-list">
+                            <p><strong>i)</strong> Ok. I will name Sheet2, and replace the Sheet2 name in the function. Simple. I name it Monday.</p>
+                        </div>
+                    </div>
+
+                    <p><strong>9) /ask</strong> how do I get a date in google sheets to take a 8/18/2025 format, and make it August 18th, 2025 format?</p>
+                    <div class="lettered-list">
+                        <p><strong>a)</strong> Spits out a manual version, and an automated version.</p>
+                        <div class="roman-list">
+                            <p><strong>i)</strong> For right now - at 11:30pm on a Friday night, I am doing the manual version. Tomorrow - I do the automation. For now, I just want to claim a small win over the powers that be at my dysfunctional job that things don't function because they are like me when I started this task - I didn't even know what to ask, because I fundamentally didn't even understand the questions that had to be asked, the tools there now to do this manually, etc… the difference is when I want to know, I take the time to learn. I ask. I implement. I see what works, what doesn't. I love the work. The process. The questions. The questions that the questions bring up. I just want to be at a place that cares to try and ask the right questions, or better yet, at least care enough to show up to this studio in the first place. A quality work environment where I can be around people who think to think. That is all.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Testing Phase</h2>
+                
+                <p><strong>Testing time.</strong> I go to my new sheet 2 titled "Monday" and change the date manually to next Monday. That worked. Next Monday I will see if the formula holds up, since it's dynamically set to understand when Monday is.</p>
+
+                <div class="numbered-list">
+                    <p><strong>1) Could the formula break?</strong></p>
+                    <div class="lettered-list">
+                        <p><strong>a)</strong> I manually tested it with dates, it worked fine</p>
+                        <p><strong>b)</strong> I don't see how any of the code written would get confused any other day of the week at face value.</p>
+                        <div class="roman-list">
+                            <p><strong>i)</strong> I think it's highly unlikely given how this is formatted and built. We will see for sure though every day of the week.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight">
+                    <p>See. I knew it would be easy. My experience of lobotomizing my $5m MC coin's public chat was destined to lead to success. The crypto way. Now let's tie this all together quickly from a very high level perspective, for my company to review, without access to the numbers an Executive Board would use.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Results Analysis</h2>
+                
+                <p><strong>Total Time:</strong> I typed every thought throughout it to show a POW and thought - so it took 3 hours total, but in reality I think I thought and asked questions for 1 ½ and typed my thoughts for another 1 ½. Probably not efficient if I had to guess compared to a Sam Altman or prompter who has been doing this for many years, but I am very proud I was able to do it, and will be automating every last piece of my antiquated workflow as much as possible while I am still here. At least it provides a baseline to work from, and learn from.</p>
+            </div>
+
+            <div class="financial-impact">
+                <h2>Financial Impact</h2>
+                
+                <p>Well, they already fired people. Lol. In theory though - my company saved <strong>$65k in salary</strong> by cutting the person who would have this in their workflow. I believe this process can be used to automate most of the board operators they pay to be there full time, the technical directors they have reminding live on air talent of times, and all of our podcast editing/posting. I do not know how much everyone through that process gets paid exactly, but I can round based on what information I do have access to - you save <strong>(1) board operator in wages, (1) technical director in wages</strong>, and more down the line as I keep building and learning…</p>
+                
+                <p>That is <strong>($130k) in salary costs per year</strong> that can be saved per live show. With our current workflow, that is <strong>($390k) in salary saved in our down season</strong> (sports network, summer). If I use last years workflow in football season, you are probably looking at an additional <strong>($455k) in savings</strong> for independent contractor work for temporary shows, and the full time roles above. The numbers are very rough estimates that likely no longer directly apply after layoffs and content still not being planned for me to use to reference in the future yet. It would be really interesting to get those numbers, the content plan, etc… and give a POW writeup on it where I can show where and how for every single show, things can be run more efficiently.</p>
+            </div>
+
+            <div class="section">
+                <h2>Future Applications</h2>
+                
+                <h3>Future of my company:</h3>
+                <p>Can be applied to clips being cut for syndication, graphics, and even more that I am not seeing while at the studio. We have a ton of remote contracted work that might fit into this niche, but this company has not done employee reviews since 2021… so no one even knows the whole story.</p>
+
+                <h3>Future for me:</h3>
+                <p>I want to be aligned with a workplace/workflow that actually 1) wants to work, and 2) is ambitious and not afraid to just try things. Why I think this role at Coinbase is perfect for me is because it functions the same way I think. Proof of Work not just for blockchains, but for thinking. Not rushing always to the end result as fast as possible, but using my background in crypto and being a disruptor by financial nature to think through every last step to make a goal a reality. Coinbase has done that - with their work in D.C., the Base blockchain, the Coinbase CEX…Every last thing works like a blockchain. Connected. Meant to build and aid each other. A beautiful financial ecosystem that relays data just like Bitcoin. It's amazing.</p>
+                
+                <p>Am I the most polished developer? Or the most experienced AI prompter? Of course not, but I am Coinbase fundamentally. When I was brought in by my boss to transition into an engineering role, he asked me to learn our entire "Master Control" room. I did not start by walking into that room and asking what buttons do what. I met everyone who has and still does work it. I asked our CTO how he sees it, and just soaked in all the info they had. I spoke to the head of security at the front, Erin. I spoke to our receptionist. What I got the first week was a mobile app to remotely control every single door in the building. An understanding of how every single item shows up in our studio. When you start from too high up, you often forget what happens at the bottom. You need someone who gets that to even attempt fundamentally changing anything.</p>
+
+                <div class="quote">
+                    <p>Like Denzel Washington says in The Equalizer 2 - "I guess anybody could do it, but nobody does, Miles. Ends up everybody complaining because nobody did what anybody could have done or should've done to begin with."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollTop = window.pageYOffset;
+            const scrollPercent = (scrollTop / scrollHeight);
+            scrollIndicator.style.transform = `scaleX(${scrollPercent})`;
+        });
+    </script>
+</body>
+</html>
