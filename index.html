@@ -110,13 +110,17 @@
         }
 
         .formula {
-            background: #1e1e1e;
-            color: #00ff00;
-            padding: 10px;
-            border-radius: 5px;
+            background: #f8f9fa;
+            color: #2c3e50;
+            padding: 12px 16px;
+            border-radius: 8px;
             font-family: 'Courier New', monospace;
             margin: 10px 0;
-            font-weight: bold;
+            font-weight: 600;
+            border: 2px solid #e9ecef;
+            font-size: 0.95em;
+            letter-spacing: 0.3px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .highlight {
@@ -171,25 +175,85 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
             .container {
-                margin: 10px;
+                margin: 0;
                 border-radius: 10px;
             }
             
             .header {
-                padding: 20px;
+                padding: 20px 15px;
             }
             
             .header h1 {
-                font-size: 1.8em;
+                font-size: 1.6em;
+                line-height: 1.2;
+                word-break: break-word;
             }
             
             .content {
-                padding: 20px;
+                padding: 20px 15px;
             }
             
             h2 {
-                font-size: 1.5em;
+                font-size: 1.4em;
+                line-height: 1.3;
+                word-break: break-word;
+            }
+            
+            h3 {
+                font-size: 1.2em;
+                line-height: 1.3;
+            }
+            
+            h4 {
+                font-size: 1.1em;
+            }
+            
+            h5 {
+                font-size: 1em;
+            }
+            
+            .numbered-list, .lettered-list, .roman-list, .sub-numbered {
+                margin-left: 15px;
+            }
+            
+            .lettered-list {
+                margin-left: 25px;
+            }
+            
+            .roman-list {
+                margin-left: 35px;
+            }
+            
+            .sub-numbered {
+                margin-left: 45px;
+            }
+            
+            .question-list, .highlight, .quote, .financial-impact {
+                margin: 15px 0;
+                padding: 15px;
+            }
+            
+            .formula {
+                padding: 10px 12px;
+                font-size: 0.85em;
+                overflow-x: auto;
+            }
+            
+            .ticker {
+                display: inline-block;
+                word-break: keep-all;
+            }
+            
+            p {
+                text-align: left;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
             }
         }
 
@@ -301,22 +365,22 @@
                     <div class="lettered-list">
                         <p><strong>a)</strong> More formulas returned. Dammit.</p>
                         <div class="roman-list">
-                            <p><strong>i)</strong> Wait one looks worth exploring: =QUERY(A:B, "SELECT A, B WHERE A >= date '"&TEXT(D1, "yyyy-mm-dd")&"' AND A <= date '"&TEXT(E1, "yyyy-mm-dd")&"'").</p>
+                            <p><strong>i)</strong> Wait one looks worth exploring: <div class="formula">=QUERY(A:B, "SELECT A, B WHERE A >= date '"&TEXT(D1, "yyyy-mm-dd")&"' AND A <= date '"&TEXT(E1, "yyyy-mm-dd")&"'")</div></p>
                         </div>
                     </div>
 
                     <p><strong>5) /ask</strong> I need Google Sheets to do the following - in cell B7, I need a dynamically updating date that is always the Monday of that week. For example - if I open the sheet on Wednesday, August 13th, 2025, cell b7 needs to display Monday, August 11th in cell B7. If I open the document on Thursday, August 14th, 2025, cell b7 needs to still display Monday, August 11th in cell b7.</p>
                     
                     <div class="lettered-list">
-                        <p><strong>a)</strong> =TODAY() - WEEKDAY(TODAY(), 2) + 1.</p>
+                        <p><strong>a)</strong> <div class="formula">=TODAY() - WEEKDAY(TODAY(), 2) + 1</div></p>
                         <div class="roman-list">
-                            <p><strong>i)</strong> <span class="highlight" style="background: #d4edda; color: #155724; font-weight: bold;">BOOM. SO CLOSE.</span></p>
+                            <p><strong>i)</strong> <strong>BOOM. SO CLOSE.</strong></p>
                         </div>
                     </div>
 
                     <p><strong>6) /ask</strong> replace =TODAY in "=TODAY() - WEEKDAY(TODAY(), 2) + 1" with something else.</p>
                     <div class="lettered-list">
-                        <p><strong>a)</strong> =A1 - WEEKDAY(A1, 2) + 1.</p>
+                        <p><strong>a)</strong> <div class="formula">=A1 - WEEKDAY(A1, 2) + 1</div></p>
                         <div class="roman-list">
                             <p><strong>i)</strong> Ok. I don't like that it's referencing cell A1 on my pretty sheet, but let's work from here. I do not want to type a single date, so now I have to have cell A1 always know when Monday is</p>
                         </div>
@@ -324,15 +388,15 @@
 
                     <p><strong>7) /ask</strong> how do I get Google Sheets to populate a single date in cell A1 that is always next Monday?</p>
                     <div class="lettered-list">
-                        <p><strong>a)</strong> =IF(WEEKDAY(TODAY(), 2) = 1, TODAY(), TODAY() + (8 - WEEKDAY(TODAY(), 2)))</p>
+                        <p><strong>a)</strong> <div class="formula">=IF(WEEKDAY(TODAY(), 2) = 1, TODAY(), TODAY() + (8 - WEEKDAY(TODAY(), 2)))</div></p>
                         <div class="roman-list">
-                            <p><strong>i)</strong> <span class="highlight" style="background: #d4edda; color: #155724; font-weight: bold;">We got 'em. Now - make it pretty time.</span></p>
+                            <p><strong>i)</strong> <strong>We got 'em. Now - make it pretty time.</strong></p>
                         </div>
                     </div>
 
                     <p><strong>8) /ask</strong> how do I take =A1 - WEEKDAY(A1, 2) + 1, and change the A1 to reference a different A1 cell, on the second google sheets tab?</p>
                     <div class="lettered-list">
-                        <p><strong>a)</strong> =Sheet2!A1 - WEEKDAY(Sheet2!A1, 2) + 1</p>
+                        <p><strong>a)</strong> <div class="formula">=Sheet2!A1 - WEEKDAY(Sheet2!A1, 2) + 1</div></p>
                         <div class="roman-list">
                             <p><strong>i)</strong> Ok. I will name Sheet2, and replace the Sheet2 name in the function. Simple. I name it Monday.</p>
                         </div>
